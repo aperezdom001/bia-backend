@@ -28,4 +28,6 @@ mongoose.connect(process.env.MONGO_URI, {
     useFindAndModify: false
 })
 
-mongoose.connection.once('connected', () => console.log('Connected to Mongo Life is Good'))
+mongoose.connection.once('connected', () => console.log('Connected to Mongo Life is Good'));
+
+app.listen(PORT, () => console.log('hello i am listening on Port: ', PORT));
