@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const foundPlayers = await Player.findById(req.params.id);
-        res.status(200).json(foundBookmark)
+        res.status(200).json(foundPlayers)
     } catch (error) {
         res.status(400).json({
             msg: error.message
@@ -47,10 +47,10 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.get('/Title/:title/', async (req, res) => {
+router.get('/initials/:initials/', async (req, res) => {
     try {
-        const foundBookmark = await Bookmark.findOne({ title: req.params.title });
-        res.status(200).json(foundBookmark)
+        const foundPlayer = await Player.findOne({ title: req.params.initials });
+        res.status(200).json(foundPlayer)
     } catch (error) {
         res.status(400).json({
             msg: error.message
@@ -62,8 +62,8 @@ router.get('/Title/:title/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        const updatedBookmark = await Bookmark.findByIdAndUpdate(req.params.id, req.body, { new: true } )
-        res.status(200).json(updatedBookmark);
+        const updatedPlayer = await Player.findByIdAndUpdate(req.params.id, req.body, { new: true } )
+        res.status(200).json(updatedPlayer);
     } catch (error) {
         res.status(400).json({
             msg: error.message
@@ -74,8 +74,8 @@ router.put('/:id', async (req, res) => {
 // Delete
 router.delete('/:id', async (req, res) => {
     try {
-        const deletedBookmark = await Bookmark.findByIdAndDelete(req.params.id);
-        res.status(200).json(deletedBookmark);
+        const deletedPlayer = await Player.findByIdAndDelete(req.params.id);
+        res.status(200).json(deletedPlayer);
     } catch (error) {
         res.status(400).json({
             msg: error.message
