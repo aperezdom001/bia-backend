@@ -30,4 +30,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 mongoose.connection.once('connected', () => console.log('Connected to Mongo Life is Good'));
 
+app.use('/', require('./controllers/playerController'));
+
+
 app.listen(PORT, () => console.log('hello i am listening on Port: ', PORT));
