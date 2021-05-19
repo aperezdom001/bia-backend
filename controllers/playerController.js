@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 })
 
 // Show
-router.get('/:id', async (req, res) => {
+router.get('/id/:id', async (req, res) => {
     try {
         const foundPlayers = await Player.findById(req.params.id);
         res.status(200).json(foundPlayers)
@@ -49,7 +49,7 @@ router.get('/:id', async (req, res) => {
 
 router.get('/initials/:initials/', async (req, res) => {
     try {
-        const foundPlayer = await Player.findOne({ title: req.params.initials });
+        const foundPlayer = await Player.findOne({ initials: req.params.initials });
         res.status(200).json(foundPlayer)
     } catch (error) {
         res.status(400).json({
