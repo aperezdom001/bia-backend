@@ -4,6 +4,7 @@ const Player = require('../models/Player');
 
 // Index
 router.get('/', async (req, res) => {
+  
     let filters;
     if(Object.keys(req.query).length > 0){
         filters = {...req.query}
@@ -11,23 +12,23 @@ router.get('/', async (req, res) => {
     try {
         if(!filters){
             const foundPlayers = await Player.find({});
-            res.status(200).json(foundPlayers)
+            res.status(200).json(foundPlayers);
         } else {
             const foundPlayers = await Player.find({...filters});
-            res.status(200).json(foundPlayers)
+            res.status(200).json(foundPlayers);
         }  
     }catch(error){
         res.status(400).json({
             msg: error.message
         })
     }
-})
+});
 
 // Create
 router.post('/', async (req, res) => {
     try {
-        const createdPlayer = await Player.create(req.body)
-        res.status(200).json(createdPlayer)
+        const createdPlayer = await Player.create(req.body);
+        res.status(200).json(createdPlayer);
     } catch(err){
         res.status(400).json({
             msg: err.message
@@ -39,7 +40,7 @@ router.post('/', async (req, res) => {
 router.get('/id/:id', async (req, res) => {
     try {
         const foundPlayers = await Player.findById(req.params.id);
-        res.status(200).json(foundPlayers)
+        res.status(200).json(foundPlayers);
     } catch (error) {
         res.status(400).json({
             msg: error.message
