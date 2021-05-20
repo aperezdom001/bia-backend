@@ -8,6 +8,14 @@
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
+
+  "keywords": [
+    "example", "heroku"
+  ],
+  "engines": {
+    "node": "15.11.0"
+  },
+
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
